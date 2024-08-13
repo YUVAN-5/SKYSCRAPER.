@@ -10,8 +10,7 @@ const AddProperty = () => {
         location: '',
         price: '',
         type: '',
-        agentId: '', // Ensure this is fetched from localStorage
-        image: '' // Base64 string for image
+        image: '' // Base64 string for the image
     });
 
     const navigate = useNavigate(); // Hook for navigation
@@ -42,27 +41,38 @@ const AddProperty = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
-            // Get agent ID from local storage
+            // Get agent ID and token from local storage
             const agentId = localStorage.getItem('userId');
-            if (!agentId) {
-                console.error('Agent ID is missing from local storage');
+            const token = localStorage.getItem('token');
+            if (!agentId || !token) {
+                toast.error('Agent ID or token is missing from local storage');
                 return;
             }
 
             // Add agent ID to form data
-            const updatedFormData = { ...formData, agentId };
+            const updatedFormData = { ...formData, agentId: parseInt(agentId) };
 
-            const response = await axios.post('http://localhost:8080/api/properties', updatedFormData);
+            // Set up config with Authorization header
+            const config = {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            };
+
+            // Send POST request to add property
+            const response = await axios.post('http://localhost:8080/api/properties', updatedFormData, config);
             
             // Show success message
             toast.success('Property added successfully!');
 
             // Redirect to agent dashboard page
-            navigate('/agent-dashboard');
+            navigate('/agentdashboard');
         } catch (error) {
-            // Show error message
-            toast.error('Error adding property: ' + (error.response?.data || error.message));
+            // Handle error and show error message
+            const errorMessage = error.response?.data?.message || error.message || 'An error occurred';
+            toast.error(`Error adding property: ${errorMessage}`);
         }
     };
 
@@ -76,14 +86,16 @@ const AddProperty = () => {
                     onChange={handleChange}
                     placeholder="BHK"
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                 />
                 <input
                     type="text"
                     name="contactName"
                     value={formData.contactName}
                     onChange={handleChange}
-                    placeholder="Contact"
+                    placeholder="Contact Name"
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                 />
                 <input
                     type="text"
@@ -92,6 +104,7 @@ const AddProperty = () => {
                     onChange={handleChange}
                     placeholder="Location"
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                 />
                 <input
                     type="number"
@@ -100,20 +113,23 @@ const AddProperty = () => {
                     onChange={handleChange}
                     placeholder="Price"
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                 />
                 <input
                     type="text"
                     name="type"
                     value={formData.type}
                     onChange={handleChange}
-                    placeholder="Type"
+                    placeholder="Type (e.g., Home, Apartment, Villa)"
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                 />
                 <input
                     type="file"
                     name="image"
                     onChange={handleFileChange}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                 />
                 <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
                     Add Property

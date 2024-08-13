@@ -116,6 +116,7 @@ package com.max.quizspring.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -127,9 +128,11 @@ import org.springframework.stereotype.Service;
 
 import com.max.quizspring.auth.AgentLoginRequest;
 import com.max.quizspring.auth.RegisterAgentRequest;
+import com.max.quizspring.auth.UpdateRequest;
 import com.max.quizspring.config.JwtToken;
 import com.max.quizspring.model.Agent;
 import com.max.quizspring.model.Token;
+import com.max.quizspring.model.User;
 import com.max.quizspring.repo.AgentRepo;
 import com.max.quizspring.repo.JwtRepo;
 
@@ -220,7 +223,9 @@ public class AgentService {
     public List<Agent> getAllAgents() {
         return agentRepository.findAll();
     }
-    
+    public long countAgents() {
+        return agentRepository.count();
+    }
 
     public boolean deleteAgentById(Long id) {
         Optional<Agent> agent = agentRepository.findById(id);
@@ -230,4 +235,17 @@ public class AgentService {
         }
         return false;
     }
+public Agent updateAgentById(Long id, UpdateRequest updateRequest) {
+    Optional<Agent> optionalAgent = agentRepository.findById(id);
+    if (optionalAgent.isPresent()) {
+        Agent agent = optionalAgent.get();
+        agent.setName(updateRequest.getName());
+        agent.setPhone(updateRequest.getPhone());
+        agent.setEmail(updateRequest.getEmail());
+        return agentRepository.save(agent);
+    } else {
+        throw new NoSuchElementException("Agent not found with id " + id);
+    }
+}
+    
 }

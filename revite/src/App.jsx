@@ -4,7 +4,7 @@ import Weblayout from './layout/Weblayout'
 import { Route,Routes } from 'react-router-dom'
 import Home from './pages/web/Home'
 import Login from './pages/web/Login'
-// import AgentLogin from './pages/web/Agentlogin'
+import AgentLogin from './pages/web/Agentlogin'
 import Register from './pages/web/Signup'
 import Notfound from './pages/web/Notfound'
 import Dashboard from './pages/admin/Dashboard'
@@ -44,7 +44,7 @@ const App = () => {
       <Route path='/aboutus' element={<About/>}/>
       <Route path='/property' element={<PropertyListing/>}/>
       <Route path='*' element={<Notfound/>}/>
-      {/* <Route path="/login/agent" element={<AgentLogin />} /> */}
+      <Route path="/login/agent" element={<AgentLogin />} />
       </Route>
       
       <Route path='/userdashboard' element={<UserDashboard/>}/>

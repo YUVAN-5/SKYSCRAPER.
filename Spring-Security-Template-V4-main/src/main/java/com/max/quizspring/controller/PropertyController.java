@@ -30,19 +30,23 @@ public class PropertyController {
     public ResponseEntity<String> addProperty(@RequestBody PropertyDto propertyRequest) {
         try {
             if (propertyRequest.getAgentId() == null) {
+                System.out.println("Agent ID is missing");
                 return new ResponseEntity<>("Agent ID is required", HttpStatus.BAD_REQUEST);
             }
-
+            System.out.println("Agent ID: " + propertyRequest.getAgentId());
+    
             Optional<Agent> optionalAgent = agentService.getAgentById(propertyRequest.getAgentId());
             if (optionalAgent.isPresent()) {
                 String base64Image = propertyRequest.getImage();
                 if (base64Image == null || base64Image.isEmpty()) {
+                    System.out.println("Image is missing");
                     return new ResponseEntity<>("Image is required", HttpStatus.BAD_REQUEST);
                 }
                 if (!isValidBase64Image(base64Image)) {
+                    System.out.println("Invalid Base64 image format");
                     return new ResponseEntity<>("Invalid Base64 image format", HttpStatus.BAD_REQUEST);
                 }
-
+    
                 Property property = new Property();
                 property.setBhk(propertyRequest.getBhk());
                 property.setContactName(propertyRequest.getContactName());
@@ -50,15 +54,17 @@ public class PropertyController {
                 try {
                     property.setPrice(Double.parseDouble(propertyRequest.getPrice()));
                 } catch (NumberFormatException e) {
+                    System.out.println("Invalid price format");
                     return new ResponseEntity<>("Invalid price format", HttpStatus.BAD_REQUEST);
                 }
                 property.setType(propertyRequest.getType());
                 property.setImg(base64Image);
                 property.setAgent(optionalAgent.get());
-
+    
                 propertyService.addProperty(property);
                 return new ResponseEntity<>("Property added successfully", HttpStatus.CREATED);
             } else {
+                System.out.println("Agent not found");
                 return new ResponseEntity<>("Agent not found", HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
