@@ -1,32 +1,34 @@
-import { FaSearch, FaSun, FaMoon } from 'react-icons/fa';
-import { useState } from 'react';
+import React from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { FiUser } from 'react-icons/fi';
 
-const UserTopbar = ({ adminName, onThemeToggle }) => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const handleThemeToggle = () => {
-    setDarkMode(!darkMode);
-    onThemeToggle();
-  };
-
-  return (
-    <div className="fixed top-0 left-64 right-0 h-16 bg-primary-lightBg dark:bg-primary-darkBg flex items-center justify-between px-6">
-      <div className="flex items-center">
-        <FaSearch className="mr-4 text-primary-lightText dark:text-primary-darkText" />
-        <input
-          type="text"
-          placeholder="Search..."
-          className="bg-transparent outline-none placeholder-primary-lightText dark:placeholder-primary-darkText"
-        />
-      </div>
-      <div className="flex items-center">
-        <span className="mr-4 text-primary-lightText dark:text-primary-darkText">{adminName}</span>
-        <div onClick={handleThemeToggle}>
-          {darkMode ? <FaSun className="cursor-pointer" /> : <FaMoon className="cursor-pointer" />}
+const AgentTopbar = ({ avatarUrl, agentName, onToggleTheme }) => {
+    return (
+        <div className="fixed top-0 left-64 right-0 h-16 bg-darkBg text-darkText flex items-center justify-between px-6">
+            <div className="flex items-center space-x-4">
+                <FaSearch />
+                <input 
+                    type="text" 
+                    placeholder="Search" 
+                    className="bg-lightBg text-darkText p-2 rounded-lg" 
+                />
+            </div>
+            <div className="flex items-center space-x-4">
+                {/* <img 
+                    src={avatarUrl} 
+                    alt="Agent Avatar" 
+                    className="w-8 h-8 rounded-full"
+                /> */}
+                 <button className="ml-4 p-2 rounded-full bg-primary text-white">
+            <FiUser />
+          </button>
+                <span>{agentName}</span>
+                <button onClick={onToggleTheme} className="focus:outline-none">
+                    Yuvan
+                </button>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default UserTopbar;
+export default AgentTopbar;

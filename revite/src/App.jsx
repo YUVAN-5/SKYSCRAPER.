@@ -29,6 +29,7 @@ import AgentDashboard from './components/agent/AgentDashboard'
 import AgentMails from './components/agent/AgentMails'
 import AgentProfile from './components/agent/AgentProfile'
 import AgentAppointments from './components/agent/AgentAppointments'
+import AddProperty from './components/agent/AddProperties'
 // import Layout from './layout/Layout'
 
 const App = () => {
@@ -70,6 +71,7 @@ const App = () => {
             <Route path='/agentmails' element={<AgentMails/>}/>
             <Route path='/agentprofile' element={<AgentProfile/>}/>
             <Route path='/agentappointments' element={<AgentAppointments/>}/>
+            <Route path='/addproperty' element={<AddProperty/>}/>
 
       </Route>
       

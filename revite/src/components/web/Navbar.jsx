@@ -14,12 +14,12 @@ const Navbar = () => {
             link:'/aboutus'
         },
         {
-            title:'LOGIN',
-            link:'/login'
+          title:'PROPERTIES',
+          link:'/property'
         },
         {
-            title:'PROPERTIES',
-            link:'/property'
+            title:'LOGIN',
+            link:'/login'
         },
         {
             title:'REGISTER',
@@ -45,7 +45,7 @@ const Navbar = () => {
             </li>
         ))
       }
-      <ModeToggle/>
+      <ModeToggle />
 
       </div>
     </div>

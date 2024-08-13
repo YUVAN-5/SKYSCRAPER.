@@ -4,14 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import com.max.quizspring.auth.LoginRequest;
 import com.max.quizspring.auth.RegisterRequest;
 import com.max.quizspring.auth.UpdateRequest;
@@ -20,7 +18,6 @@ import com.max.quizspring.model.Token;
 import com.max.quizspring.model.User;
 import com.max.quizspring.repo.JwtRepo;
 import com.max.quizspring.repo.UserRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Service

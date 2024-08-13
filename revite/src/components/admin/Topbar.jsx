@@ -41,24 +41,24 @@ import { ModeToggle } from '../ModeToggle';
 
 const Topbar = () => {
   return (
-    <div className="fixed top-0 left-64 right-0 h-16 bg-lightBg text-lightText flex items-center justify-between px-6">
-      <div className="relative">
+    <div className="fixed top-0 left-200 right-0 h-16 bg-lightBg text-lightText flex items-center justify-between px-6">
+      {/* <div className="relative">
         <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2" />
         <input 
           type="text" 
           placeholder="Search..." 
           className="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary"
         />
-      </div>
-      <div className="flex items-center">
+      </div> */}
+      <div className="flex items-center justify-end ">
         <div className="flex items-center space-x-4">
-          <img src="/avatar.png" alt="Admin Avatar" className="w-8 h-8 rounded-full" />
-          <span>Admin Name</span>
-          <button className="ml-4 p-2 rounded-full bg-primary text-white">
+          {/* <img src="/avatar.png" alt="Admin Avatar" className="w-8 h-8 rounded-full" /> */}
+          <button className="ml-10 p-2 rounded-full bg-primary text-white">
             <FiUser />
           </button>
+          <span>Admin Name</span>
         </div>
-        <ModeToggle/>
+        <ModeToggle />
       </div>
     </div>
   );

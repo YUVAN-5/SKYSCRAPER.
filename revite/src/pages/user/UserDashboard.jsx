@@ -52,18 +52,18 @@ const UserDashboard = () => {
   return (
     <div className={`flex h-screen ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'}`}>
       {/* Fixed Sidebar */}
-      <div className="fixed top-0 left-0 bg-black text-white w-64 h-full py-7 px-2 dark:bg-gray-800">
+      {/* <div className="fixed top-0 left-0 bg-black text-white w-64 h-full py-7 px-2 dark:bg-gray-800">
         <div className="text-white flex items-center space-x-2 px-4">
           <span className="text-2xl font-extrabold">SKYSCRAPER</span>
         </div>
         <nav className="mt-6">
           <Link to="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500">Overview</Link>
-          <Link to="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500">Properties</Link>
+          <Link to="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500">Properties</Link> */}
           {/* <Link to="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500">Reports</Link> */}
           {/* <Link to="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500">Settings</Link> */}
-          <Link to="/" className="block py-2.5 px-4 mt-96 rounded transition duration-200 hover:bg-blue-700 hover:text-white dark:hover:bg-blue-800">LOGOUT</Link>
+          {/* <Link to="/" className="block py-2.5 px-4 mt-96 rounded transition duration-200 hover:bg-blue-700 hover:text-white dark:hover:bg-blue-800">LOGOUT</Link>
           </nav>
-      </div>
+      </div> */}
 
       {/* Fixed Topbar */}
       <div className="fixed top-0 left-64 right-0 bg-white dark:bg-gray-900 p-4 shadow-md z-10">

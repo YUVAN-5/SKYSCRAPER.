@@ -32,7 +32,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
     private String name;
-    // private String username;
+    private String username;
     private String email;
     private String password;
 
@@ -51,10 +51,10 @@ public class User implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    // @Override
-    // public String getUsername() {
-    //     return username;
-    // }
+    @Override
+    public String getUsername() {
+        return username;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

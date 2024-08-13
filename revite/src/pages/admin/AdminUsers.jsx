@@ -145,7 +145,7 @@ const AdminUsers = () => {
                     Name {sortConfig.key === 'name' ? (sortConfig.direction === 'asc' ? '↑' : '↓') : ''}
                   </button>
                 </th>
-                {/* <th scope="col">Username</th> */}
+                <th scope="col">Username</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
                 <th scope="col">Action</th>

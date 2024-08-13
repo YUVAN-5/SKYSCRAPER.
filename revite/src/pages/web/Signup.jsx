@@ -64,6 +64,7 @@ import { useTheme } from '../../components/ThemeProvider';
 const Signup = () => {
   const { theme } = useTheme();
   const [name, setName] = useState('');
+  const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -72,12 +73,11 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-  
-
+    
     try {
       const response = await axios.post('http://localhost:8080/api/auth/register', {
         name,
+        username,
         email,
         password,
       });
@@ -114,6 +114,20 @@ const Signup = () => {
                 onChange={(e) => setName(e.target.value)}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 m-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-400"
                 placeholder="Name" 
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="username" className="sr-only">UserName</label>
+              <input 
+                id="username" 
+                name="name" 
+                type="text" 
+                required
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+                className="appearance-none rounded-none relative block w-full px-3 py-2 m-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-400"
+                placeholder="UserName" 
               />
             </div>
             <div>

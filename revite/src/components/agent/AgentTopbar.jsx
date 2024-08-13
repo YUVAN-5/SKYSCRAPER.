@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { FiUser } from 'react-icons/fi';
 
 const AgentTopbar = ({ avatarUrl, agentName, onToggleTheme }) => {
     return (
@@ -13,14 +14,17 @@ const AgentTopbar = ({ avatarUrl, agentName, onToggleTheme }) => {
                 />
             </div>
             <div className="flex items-center space-x-4">
-                <img 
+                {/* <img 
                     src={avatarUrl} 
                     alt="Agent Avatar" 
                     className="w-8 h-8 rounded-full"
-                />
+                /> */}
+                 <button className="ml-4 p-2 rounded-full bg-primary text-white">
+            <FiUser />
+          </button>
                 <span>{agentName}</span>
                 <button onClick={onToggleTheme} className="focus:outline-none">
-                    Toggle Theme
+                    Agent
                 </button>
             </div>
         </div>

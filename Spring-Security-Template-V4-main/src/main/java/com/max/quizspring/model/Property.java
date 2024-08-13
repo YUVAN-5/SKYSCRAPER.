@@ -131,4 +131,13 @@ public class Property {
     @Lob
     @Column(name = "img")
     private String img;
+
+    public String getName() {
+        return getName();
+    }
+
+    // If there's a `getAgentName` method expected, ensure it's implemented correctly
+    public String getAgentName() {
+        return getName();
+    }
 }
